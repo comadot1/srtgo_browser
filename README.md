@@ -1,10 +1,21 @@
 > [!IMPORTANT]
 본 프로젝트는 https://github.com/lapis42/srtgo 를 기반으로 제작되었으며,
-CLI로 제공되던 srtgo 프로그램을, 웹 터미널 형태로 제공하기 위하여 제작되었습니다.
+CLI로 제공되던 srtgo 프로그램을, 웹 터미널 형태로 제공하여 모바일로 사용하기 위해 제작되었습니다.
 
 docker, docker-compose를 통해 배포되는 형태이며,
 
 nextjs, node socket server, debian + srtgo CLI 프로그램으로 구성되어있습니다.
+개선이 필요한 부분은 소스파일 원본 포함해서 업로드하였으니 참고바랍니다.
+
+
+
+#### PASSWORD 입력 화면
+![Image](https://github.com/user-attachments/assets/8c728bc4-d8b7-476b-901e-44ba03ee5f17)
+
+#### Web UI
+![Image](https://github.com/user-attachments/assets/c1e4b0ef-1db4-4546-a958-84f25b421c17)
+
+
 
 
 
