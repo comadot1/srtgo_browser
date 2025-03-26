@@ -1,0 +1,24 @@
+version: '3'
+services:
+  ktx_front:
+    build:
+      context: .
+      dockerfile: Dockerfile_front
+    ports:
+      - ${FRONT_PORT:-3000}:3000
+    # volumes:
+    #   - ./front:/app/front
+    environment:
+      - NEXT_PUBLIC_SOCKET_PROXY=${NEXT_PUBLIC_SOCKET_PROXY}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - SECRET_KEY=${SECRET_KEY}
+      - USE_PASSCHECK=${USE_PASSCHECK}
+  ktx_socket:
+    build:
+      context: .
+      dockerfile: Dockerfile_socketServer
+    ports:
+      - ${SOCKET_PORT:-5000}:5000
+    environment:
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - SECRET_KEY=${SECRET_KEY}

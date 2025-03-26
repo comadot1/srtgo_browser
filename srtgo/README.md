@@ -1,14 +1,14 @@
-> [!IMPORTANT]
-본 프로젝트는 https://github.com/lapis42/srtgo 를 기반으로 제작되었으며,
-CLI로 제공되던 srtgo 프로그램을, 웹으로 제공하기 위하여 제작되었습니다.
-
-docker, docker-compose를 통해 배포되는 형태이며,
-
-nextjs, node socket server, debian + srtgo CLI 프로그램으로 구성되어있습니다.
+pip install keyring keyrings.alt
 
 
+pyinstaller --clean --onefile --collect-all readchar --collect-all inquirer --name=srtgo srtgo\srtgo.py
 
 # SRTgo: K-Train (KTX, SRT) Reservation Assistant
+[![Upload Python Package](https://github.com/lapis42/srtgo/actions/workflows/python-publish.yml/badge.svg)](https://github.com/lapis42/srtgo/actions/workflows/python-publish.yml)
+[![Downloads](https://static.pepy.tech/badge/srtgo)](https://pepy.tech/project/srtgo)
+[![Downloads](https://static.pepy.tech/badge/srtgo/month)](https://pepy.tech/project/srtgo)
+[![Python version](https://img.shields.io/pypi/pyversions/srtgo)](https://pypistats.org/packages/srtgo)
+
 > [!WARNING]  
 > 본 프로그램의 모든 상업적, 영리적 이용을 엄격히 금지합니다. 본 프로그램 사용에 따른 민형사상 책임을 포함한 모든 책임은 사용자에게 따르며, 본 프로그램의 개발자는 민형사상 책임을 포함한 어떠한 책임도 부담하지 아니합니다. 본 프로그램을 내려받음으로써 모든 사용자는 위 사항에 아무런 이의 없이 동의하는 것으로 간주됩니다.
 
@@ -39,43 +39,20 @@ nextjs, node socket server, debian + srtgo CLI 프로그램으로 구성되어�
 - Child/Senior ticket support
 - Waitlist for sold-out trains
 
-## Installation
-Before running the project, please configure the .env file according to your environment.
+## Installation / Update
+```bash
+pip install srtgo -U
+```
 
-#### 1. Configure Port Mappings
-Update the port mappings for the following services as needed:
+- Install beta version (can be unstable)
+```bash
+pip install git+https://github.com/lapis42/srtgo -U
+```
 
-- ktx_front: Defaults to port 3000
-- ktx_socket: Defaults to port 5000
+## Using SRTgo
 
-Adjust these ports based on your system requirements.
-
-#### 2. Set NEXT_PUBLIC_SOCKET_PROXY
-This value represents the address of the ktx_socket service.
-
-- If using a domain, provide the domain name.
-- If not, use the IP address.
-
-Make sure the protocol matches that of ktx_front:
-
-- If ktx_front uses http, use ws:// for the socket proxy.
-- If ktx_front uses https, use wss://.
-
-#### 3. Set USE_PASSCHECK
-This value enables or disables the password verification logic.
-
-Supported values: true or false
-
-##### 3.1 If USE_PASSCHECK is set to true:
-
-You must also configure the following:
-
-- ADMIN_PASSWORD: The password required to log in.
-- SECRET_KEY: A secret used for token generation and validation.
-
-#### 4. Run Containers.
-```sh
-$ docker compose up -d --build
+```bash
+> srtgo
 ```
 
 ```bash
@@ -197,5 +174,3 @@ $ docker compose up -d --build
 
 ## Acknowledgments
 - This project includes code from [SRT](https://github.com/ryanking13/SRT) by ryanking13, licensed under the MIT License, and [korail2](https://github.com/carpedm20/korail2) by carpedm20, licensed under the BSD License.
-
-

@@ -1,0 +1,16 @@
+FROM --platform=${BUILDPLATFORM} docker.io/python:3.10-slim
+
+RUN apt-get update && apt-get install -y curl git gnupg make g++ && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt-get install -y nodejs
+RUN ln -sf /usr/bin/python3.10 /usr/bin/python && python --version && node --version
+
+COPY . /app
+WORKDIR /app
+EXPOSE 5000
+ENV SETUPTOOLS_SCM_PRETEND_VERSION_FOR_SRTGO=1.0.0
+RUN echo "/app/srtgo/dist/srtgo; exit" >> ~/.bashrc
+RUN pip install -U pip wheel setuptools pyinstaller && cd /app/srtgo && pip install . && pip install keyring keyrings.alt && pyinstaller --clean --onefile --collect-all readchar --collect-all inquirer --name=srtgo srtgo/srtgo.py
+
+RUN cd /app/front && npm install
+WORKDIR /app/front
+
+ENTRYPOINT ["node","websocket-server.js"]
