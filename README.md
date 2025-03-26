@@ -1,6 +1,6 @@
 > [!IMPORTANT]
 본 프로젝트는 https://github.com/lapis42/srtgo 를 기반으로 제작되었으며,
-CLI로 제공되던 srtgo 프로그램을, 웹으로 제공하기 위하여 제작되었습니다.
+CLI로 제공되던 srtgo 프로그램을, 웹 터미널 형태로 제공하기 위하여 제작되었습니다.
 
 docker, docker-compose를 통해 배포되는 형태이며,
 
